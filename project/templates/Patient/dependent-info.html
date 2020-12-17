@@ -1,0 +1,92 @@
+{% extends "index.html" %}
+
+{% block page_content %}
+
+<div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Họ và tên</label>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control is-expanded has-icons-left">
+          <input class="input" type="text" placeholder="Có dấu, chứa khoảng trắng">
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+        <p class="control is-expanded has-icons-left has-icons-right">
+          <input class="input" type="email" placeholder="youremail@email.com">
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+        </p>
+      </div>
+    </div>
+</div>
+
+<div class="field is-horizontal">
+    <div class="field-label"></div>
+    <div class="field-body">
+      <div class="field is-expanded">
+        <div class="field has-addons">
+          <p class="control">
+            <a class="button is-static">
+              +84
+            </a>
+          </p>
+          <p class="control is-expanded">
+            <input class="input" type="tel">
+          </p>
+        </div>
+        <p class="help">Không nhập chữ số 0 đầu số điện thoại</p>
+      </div>
+    </div>
+</div>
+
+<div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Quan hệ</label>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control is-expanded">
+          <input class="input" type="text">
+        </p>
+      </div> 
+    </div>
+  </div>
+
+<div class="field is-horizontal">
+    <div class="field-label">
+      <!-- Left empty for spacing -->
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          <button class="button is-light">
+            Thêm người thân
+          </button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<br>
+<div class="field is-horizontal">
+    <div class="field-label">
+      <!-- Left empty for spacing -->
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          <button class="button is-primary">
+            Cập nhật
+          </button>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
