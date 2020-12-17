@@ -1,5 +1,6 @@
 from flask import *
 from project import db
+import re
 
 main = Blueprint('main', __name__)
 conn = db.connect()

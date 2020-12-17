@@ -44,3 +44,10 @@ function submit() {
   let benh_chuan_doan = $('#benh-chuan-doan').val()
 
 }
+
+// console.log(session['loggedin']);
+if (1) {
+  $('.log-in').style.display = 'none';
+} else {
+  $('.log-out').style.display = 'none';
+}

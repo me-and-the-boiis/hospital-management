@@ -1,5 +1,9 @@
 .DS_Store
 auth/
+__pycache__/
+venv/
+static/
+node_modules/
 .idea
 .vscode
 project/__pycache__/

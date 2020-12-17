@@ -1,11 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<h1 class="title">
-  Flask Login Example
-</h1>
-<h2 class="subtitle">
-  Easy authentication and authorization in Flask.
-</h2>
+    <section class="section is-hero">
+        <div class="container">
+            <div class="columns is-vcentered is-hcentered">
+                <div class="column is-6 is-5-fullhd is-offset-1 fullhd">
+                    <div class="section-header">
+                        <h1 style="font-size: 3em; color: #00d1b2;" class="title is-spaced">
+                            CheemsMec Healthcare
+                        </h1>
+                        <h2 class="subtitle is-3">
+                            Hệ thống chăm sóc sức khỏe Cheems nhất thế giới năm 2020
+                        </h2>
+                        <a href="{{ url_for('auth.signup') }}">
+                            <button class="button is-block is-primary is-large ">Đăng kí ngay</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <div class="section-media">
+                        <img style="height: 80%; width: 80%;" src="{{ url_for('static', filename='images/illust.png') }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}

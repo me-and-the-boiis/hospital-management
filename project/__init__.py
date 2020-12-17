@@ -1,5 +1,6 @@
 from flask import Flask
 from flaskext.mysql import MySQL
+# from flask_mysqldb import MySQL
 
 # init SQLAlchemy so we can use it later in our models
 db = MySQL()
