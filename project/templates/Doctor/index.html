@@ -101,9 +101,9 @@
         <div class="field-label is-normal">
           <label class="label">Thuốc chỉ định:</label>
         </div>
-        <div class="field-body" style="height: 200px; overflow-y: scroll; margin-bottom: 0;" >
+        <div id='medicine-body' class="field-body" style="height: 240px; overflow-y: scroll; margin-bottom: 0;" >
             <div class="field">
-                <table class="table is-fullwidth">
+                <table id="medicine-table" class="table is-fullwidth">
                     <thead>
                       <tr>
                         <th><abbr title="STT">#</abbr></th>
@@ -111,7 +111,7 @@
                         <th>Cách sử dụng</th>
                       </tr>
                     </thead>
-                    <tbody> 
+                    <tbody>
                         <tr>
                             <td><strong>1</strong></td>
                             <td>
@@ -148,46 +148,10 @@
                                 </button>
                             </td>
                         </tr>
-                        <!-- <tr>
-                            <td><strong>1</strong></td>
-                            <td>
-                                <div class="control">
-                                    <input class="input" type="text" placeholder="Small input">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="control">
-                                    <input class="input" type="text" placeholder="Small input">
-                                </div>
-                            </td>
-                            <td>
-                                <button class="button is-danger is-inverted">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>1</strong></td>
-                            <td>
-                                <div class="control">
-                                    <input class="input" type="text" placeholder="Small input">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="control">
-                                    <input class="input" type="text" placeholder="Small input">
-                                </div>
-                            </td>
-                            <td>
-                                <button class="button is-danger is-inverted">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </td>
-                        </tr> -->
                     </tbody>
                 </table>
-                <button class="button is-primary is-light add-item">
-                    <i class="fas fa-plus"></i>t
+                <button id = "add-item" class="button is-primary is-light additem">
+                    <i class="fas fa-plus"></i>
                     <h6 class="subtitle is-6" style="color: aliceblue;">Thêm thuốc</h6>
                 </button>
             </div>
