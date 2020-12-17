@@ -5,6 +5,7 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
+    return render_template('Doctor/index.html')
     return render_template('Patient/index.html')
 
 @main.route('/profile')
