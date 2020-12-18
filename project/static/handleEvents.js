@@ -1,14 +1,16 @@
 const medicineTable = $('#medicine-table')
 const medicineBody = $('#medicine-body')
 
-medicineTable.on('click', '.delete-item', function() {
+const deleteItem = function() {
   $(this).closest('tr').remove()
   const myBody = medicineTable.find('tbody')
   index = 1
   myBody.find('strong').each(function () {
     this.innerHTML = index++
   })
-})
+}
+
+medicineTable.on('click', '.delete-item', deleteItem)
 
 $('#add-item').click(function() {
   const myBody = medicineTable.find('tbody')
@@ -33,9 +35,12 @@ $('#add-item').click(function() {
   </tr>
   `
   const item = jQuery.parseHTML(innerHTML);
-  $(item).on('click', '.delete-item', function() {
-    $(this).closest('tr').remove()
-  })
+  $(item).on('click', '.delete-item', deleteItem)
   myBody.append(item)
   medicineBody.scrollTop(medicineBody.height()+9999)
 })
+
+function submit() {
+  let benh_chuan_doan = $('#benh-chuan-doan').val()
+
+}
