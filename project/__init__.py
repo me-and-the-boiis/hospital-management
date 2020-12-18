@@ -24,6 +24,14 @@ def create_app():
     # blueprint for non-auth parts of app
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
+    
+    # blueprint for doctor auth
+    from .doctor import doctor as doctor_blueprint
+    app.register_blueprint(doctor_blueprint)
+
+    # blueprint for patient auth
+    from .patient import patient as patient_blueprint
+    app.register_blueprint(patient_blueprint)
 
     db.connect()
 
