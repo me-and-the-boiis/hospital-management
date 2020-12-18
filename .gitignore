@@ -2,3 +2,4 @@
 auth/
 .idea
 .vscode
+project/__pycache__/
