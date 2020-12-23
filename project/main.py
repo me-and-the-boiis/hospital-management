@@ -10,7 +10,7 @@ def index():
     cursor.execute("CALL Patient_InchargedOf(100002)")
     data = cursor.fetchall()
     
-    return render_template('User/index.html', data = data)
+    return render_template('User/index.html')
 
 @main.route('/profile')
 def profile():

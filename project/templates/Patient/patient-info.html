@@ -1,19 +1,28 @@
 {% extends "patient-index.html" %}
 
+{% block header %}
+  {% if g.user %}
+    <a class="action" href="{{ url_for('blog.create') }}">New</a>
+  {% endif %}
+{% endblock %}
+
 {% block page_content %}
 
-<div class="field is-horizontal">
+  <div class="field is-horizontal">
     <div class="field-label is-normal">
       <label class="label">Số BHYT</label>
     </div>
     <div class="field-body">
       <div class="field">
-        <div class="control">
-          <input class="input" type="text" placeholder="SV-2-64-263 945 2734">
-        </div>
+        <p class="control is-expanded">
+          <input name="hin" class="input" type="text" required>
+        </p>
+        <p class="help">
+            Không có khoảng trắng giữa các số
+        </p>
       </div>
     </div>
-</div>
+  </div>
 
 <div class="field is-horizontal">
     <div class="field-label is-normal">
@@ -22,7 +31,7 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded has-icons-left">
-          <input class="input" type="text" placeholder="Có dấu, chứa khoảng trắng">
+          <input name="name" class="input" type="text" placeholder="Có dấu, chứa khoảng trắng" required>
           <span class="icon is-small is-left">
             <i class="fas fa-user"></i>
           </span>
@@ -30,7 +39,7 @@
       </div>
       <div class="field">
         <p class="control is-expanded has-icons-left has-icons-right">
-          <input class="input" type="email" placeholder="youremail@email.com">
+          <input name="email" class="input" type="email" placeholder="youremail@email.com" required>
           <span class="icon is-small is-left">
             <i class="fas fa-envelope"></i>
           </span>
@@ -50,7 +59,7 @@
             </a>
           </p>
           <p class="control is-expanded">
-            <input class="input" type="tel">
+            <input name="phone" class="input" type="tel" required>
           </p>
         </div>
         <p class="help">Không nhập chữ số 0 đầu số điện thoại</p>
@@ -66,7 +75,7 @@
       <div class="field is-narrow">
         <div class="control">
           <div class="select is-fullwidth">
-            <select>
+            <select name="gender">
               <option>Nam</option>
               <option>Nữ</option>
               <option>Khác</option>
@@ -84,7 +93,7 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded">
-          <input class="input" type="date">
+          <input name="bday" class="input" type="date" required>
         </p>
       </div>
       <div class="field"></div>
@@ -99,25 +108,12 @@
     <div class="field-body">
       <div class="field">
         <p class="control is-expanded">
-          <input class="input" type="text">
+          <input name="addr" class="input" type="text" required>
         </p>
         <p class="help">
             Số nhà, tên đường, Phường/Xã, Quận/Huyện, Tỉnh/Thành phố
         </p>
       </div> 
-    </div>
-  </div>
-  
-  <div class="field is-horizontal">
-    <div class="field-label is-normal">
-      <label class="label">Ghi chú</label>
-    </div>
-    <div class="field-body">
-      <div class="field">
-        <div class="control">
-          <textarea class="textarea" placeholder="Thông tin thêm về bệnh nhân"></textarea>
-        </div>
-      </div>
     </div>
   </div>
   

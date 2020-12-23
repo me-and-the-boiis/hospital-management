@@ -12,7 +12,7 @@ def create_app():
 
     app.config['MYSQL_DATABASE_USER'] = 'root'
     app.config['MYSQL_DATABASE_PASSWORD'] = '0000'
-    app.config['MYSQL_DATABASE_DB'] = 'hospital-matb'
+    app.config['MYSQL_DATABASE_DB'] = 'hospital_management'
     app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 
     db.init_app(app)
