@@ -8,15 +8,15 @@
               THÔNG TIN CHUNG
             </p>
             <ul class="menu-list">
-              <li><a href="{{ url_for('patient.viewPatientProfile') }}">Thông tin cá nhân</a></li>
-              <li><a href="{{ url_for('patient.viewDependentInfo') }}">Thông tin thân nhân</a></li>
+              <li><a href="{{ url_for('patient.viewPatientProfile', hin=hin) }}">Thông tin cá nhân</a></li>
+              <li><a href="{{ url_for('patient.viewDependentInfo', hin=hin) }}">Thông tin thân nhân</a></li>
             </ul>
             <br>
             <p class="menu-label">
               THÔNG TIN KHÁM BỆNH
             </p>
             <ul class="menu-list">
-                <li><a href="{{ url_for('patient.viewExaminationHistory') }}">Lịch sử khám bệnh</a></li>
+                <li><a href="{{ url_for('patient.viewExaminationHistory', hin=hin) }}">Lịch sử khám bệnh</a></li>
                 <li><a>Lịch sử xét nghiệm</a></li>
                 <li><a>Lịch sử phẫu thuật</a></li>
             </ul>

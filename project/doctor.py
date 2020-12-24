@@ -9,5 +9,5 @@ cursor = conn.cursor()
 def doctorWorkspace():
     cursor.execute("SELECT * FROM patient")
     data = cursor.fetchall()
-
+    print("Hemlllo----------------")
     return render_template('Doctor/index.html', data = data)
