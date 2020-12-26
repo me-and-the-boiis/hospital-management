@@ -10,9 +10,10 @@ def viewPatientProfile(hin):
     if request.method == 'GET':
         cursor.execute("SELECT * FROM patient WHERE hin = '{}'".format(hin))
         patient = cursor.fetchall()
-        print(patient)
-        if not patient: return "NOTFOUND"
-        return render_template('Patient/patient-info.html',  patient = patient[0])
+        # print(patient)
+        if not patient:
+            return "NOTFOUND"
+        return render_template('Patient/patient-info.html', patient = patient[0])
 
     elif request.method == 'POST':
         # myhin     = request.form['hin']
@@ -21,35 +22,38 @@ def viewPatientProfile(hin):
         gender  = request.form['gender']
         cakeday = request.form['bday']
         addr    = request.form['addr']
-        print("CALL Update_Info_Patient('{}', '{}', '{}', '{}', '{}')".format(hin, gender=="Nam", cakeday, addr, phone))
+        # print("CALL Update_Info_Patient('{}', '{}', '{}', '{}', '{}')".format(hin, gender=="Nam", cakeday, addr, phone))
         cursor.execute(
             'CALL Update_Info_Patient(\'{}\', \'{}\', \'{}\', \'{}\', \'{}\')'.format(hin, int(gender=="Nam"), cakeday, addr, phone)
         )
         conn.commit()
-        return redirect(url_for('patient.viewPatientProfile', hin=hin))
+        flash('Cập nhật thông tin bệnh nhân thành công!')
+        return redirect(url_for('patient.viewPatientProfile', hin = hin))
 
     return render_template('Patient/patient-info.html')
 
-@patient.route('/patient/dependent', methods=['POST', 'GET'])
-def viewDependentInfo():
+@patient.route('/patient/dependent/<id>', methods=['POST', 'GET'])
+def viewDependentInfo(id):
     if request.method == 'GET':
-        cursor.execute("SELECT * FROM dependent")
-        data = cursor.fetchall()
-        return render_template('Doctor/index.html', dependentInfo = data)
+        cursor.execute("SELECT * FROM dependent WHERE id = '{}'".format(id))
+        dependent = cursor.fetchall()
+        print(dependent)
+        if not dependent:
+            return "NOTFOUND"
+        return render_template('Patient/dependent-info.html', dependent = dependent[0])
 
     elif request.method == 'POST':
         name    = request.form['name']
         email   = request.form['email']
         phone   = request.form['phone']
         rela    = request.form['relationship']
-        cursor.execute('SELECT * FROM patient WHERE hin = ?', (hin,))
-
-        # cursor.execute(
-        #     '',
-        #     (hin, name, email, phone, gender, cakeday, addr, g.user['id'])
-        # )
-        # db.commit()
-        return redirect(url_for('patient.viewPatientProfile'))
+        print(name, email, phone)
+        cursor.execute(
+            'CALL Update_Info_Dependent(\'{}\', \'{}\', \'{}\', \'{}\', \'{}\')'.format(id, name, phone, email, rela)
+        )
+        conn.commit()
+        flash('Cập nhật thông tin người thân thành công!')
+        return redirect(url_for('patient.viewDependentInfo', id = id))
 
     return render_template('Patient/dependent-info.html')
 
