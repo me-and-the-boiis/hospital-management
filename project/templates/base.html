@@ -2,90 +2,92 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hospital Management System - Login</title>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet" >
-    <link rel="stylesheet" href="../static/style.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hospital Management System - Login</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../static/style.css">
 </head>
 
 <body>
-    <section class="hero is-fullheight">
-      <!-- Hero head: will stick at the top -->
-        <div class="hero-head">
-            <nav class="navbar has-shadow is-spaced">
-                <div class="container">
-                    <div class="navbar-brand" >
-                        <a class="navbar-item" href="{{ url_for('main.index') }}">
-                          <img src="{{ url_for('static', filename='images/lmogmo.png') }}" alt="Logo">
-                          <h1 style="color: #00d1b2;" class="title">CheemsMec</h1>
-                        </a>
-                        <div id="navbarBurger" class="navbar-burger" data-target="navbarMenuHeroA">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                    <div id="navbarMenuHeroA" class="navbar-menu">
-                        <div class="navbar-end">
-                            <a href="{{ url_for('main.index') }}" class="navbar-item">
-                                Home
-                            </a>
-                            <a href="{{ url_for('main.profile') }}" class="navbar-item">
-                                Profile
-                            </a>
-                            {% if not session['username'] %}
-                                <a href="{{ url_for('auth.signup') }}" class="navbar-item">
-                                    Sign Up
-                                </a>
-                                <div class="navbar-item">
-                                    <a class="button is-primary log-in" href="{{ url_for('auth.login') }}">
-                                        Login
-                                    </a>
-                                </div>
-                            {% else %}
-                                <div class="navbar-item">
-                                    <a class="button log-out" href="{{ url_for('auth.logout') }}">
-                                        Logout
-                                    </a>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </nav>
+<section class="hero is-fullheight">
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    <nav class="navbar has-shadow is-spaced">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="{{ url_for('main.index') }}">
+            <img src="{{ url_for('static', filename='images/lmogmo.png') }}" alt="Logo">
+            <h1 style="color: #00d1b2;" class="title">CheemsMec</h1>
+          </a>
+          <div id="navbarBurger" class="navbar-burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
-        <!-- Hero content: will be in the middle -->
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul class=flashes>
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+          <div class="navbar-end">
+            <a href="{{ url_for('main.index') }}" class="navbar-item">
+              Home
+            </a>
+            <a href="{{ url_for('main.profile') }}" class="navbar-item">
+              Profile
+            </a>
+            {% if not session['username'] %}
+              <a href="{{ url_for('auth.signup') }}" class="navbar-item">
+                Sign Up
+              </a>
+              <div class="navbar-item">
+                <a class="button is-primary log-in" href="{{ url_for('auth.login') }}">
+                  Login
+                </a>
+              </div>
+            {% else %}
+              <div class="navbar-item">
+                <a class="button log-out" href="{{ url_for('auth.logout') }}">
+                  Logout
+                </a>
+              </div>
             {% endif %}
-        {% endwith %}
-        <div class="hero-body" style="align-items: flex-start;">
-            {% block content %}
-            {% endblock %}
+          </div>
         </div>
-        <!-- Hero footer: will stick at the bottom -->
-        <footer style="font-size: small;" class="footer">
-            <div class="content has-text-centered">
-                <p>
-                    Cheems Healthcare
-                </p>
-                <p>
-                    Copyright 2020 by MATB&#174. All Rights Reserverd.
-                </p>
-            </div>
-        </footer>
-    </section>
+      </div>
+    </nav>
+  </div>
+  <!-- Hero content: will be in the middle -->
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  <div class="hero-body" style="align-items: flex-start;">
+    <div class="container has-text-centered">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </div>
+  <!-- Hero footer: will stick at the bottom -->
+  <footer style="font-size: small;" class="footer">
+    <div class="content has-text-centered">
+      <p>
+        Cheems Healthcare
+      </p>
+      <p>
+        Copyright 2020 by MATB&#174. All Rights Reserverd.
+      </p>
+    </div>
+  </footer>
+</section>
 </body>
 
 <script src="../static/handlePatientE.js"></script>
-<script src="{{url_for('static', filename='handleEvents.js')}}"></script>
+<script src="{{ url_for('static', filename='handleEvents.js') }}"></script>
 </html>
