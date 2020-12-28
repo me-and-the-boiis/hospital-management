@@ -1,12 +1,17 @@
 from flask import *
-from . import db
+from project import db
+import re
 
 main = Blueprint('main', __name__)
+conn = db.connect()
+cursor = conn.cursor()
 
-@main.route('/')
+@main.route('/', methods=['GET'])
 def index():
-    return render_template('Doctor/index.html')
-    return render_template('Patient/index.html')
+    cursor.execute("CALL Patient_InchargedOf(100002)")
+    data = cursor.fetchall()
+    
+    return render_template('User/index.html')
 
 @main.route('/profile')
 def profile():

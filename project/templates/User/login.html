@@ -1,29 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="column is-4 is-offset-4">
-    <h3 class="title">Login</h3>
-    <div class="box">
-        <form method="POST" action="/login">
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="email" name="email" placeholder="Your Email" autofocus="">
+    <div class="container">
+        {% if error %}
+            <div class="notification is-danger is-light">
+                <button class="delete"></button>
+                <strong>Error:</strong> {{ error }}
+            </div>
+        {% endif %}
+        <div class="columns is-vcentered is-hcentered">
+            <div class="column is-6 is-offset-1">
+                <div class="section-media">
+                    <img style="height: 80%; width: 80%;" src="{{ url_for('static', filename='images/Picture2.png') }}">
                 </div>
             </div>
-
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="password" name="password" placeholder="Your Password">
-                </div>
+            <div class="column is-4">
+                <h3 class="title">Login</h3>
+                <form method="POST" action="{{request.path}}">
+                    <div class="field">
+                        <div class="control">
+                            <input class="input is-large" type="text" name="username" placeholder="User Name" autofocus="" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <input class="input is-large" type="password" name="password" placeholder="Your Password" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            Remember me
+                        </label>
+                    </div>
+                    <button type = "submit" class="button is-block is-primary is-large ">Login</button>
+                </form>
             </div>
-            <div class="field">
-                <label class="checkbox">
-                    <input type="checkbox">
-                    Remember me
-                </label>
-            </div>
-            <button class="button is-block is-info is-large is-fullwidth">Login</button>
-        </form>
+        </div>
     </div>
-</div>
 {% endblock %}

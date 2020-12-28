@@ -1,30 +1,34 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="column is-4 is-offset-4">
-    <h3 class="title">Sign Up</h3>
-    <div class="box">
-        <form method="POST" action="/signup">
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="email" name="email" placeholder="Email" autofocus="">
+    <div class="container">
+        <div class="columns is-vcentered is-hcentered">
+            <div class="column is-5 is-offset-1">
+                <h3 class="title">Sign Up</h3>
+                <form method="POST" action="{{request.path}}">
+                    <div class="field">
+                        <div class="control">
+                            <input class="input is-medium" type="text" name="username" placeholder="User Name" autofocus="" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <input class="input is-medium" type="text" name="HIN" placeholder="BHYT" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <input class="input is-medium" type="password" name="password" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <button type = "submit" class="button is-block is-info is-large ">Sign Up</button>
+                </form>
+            </div>
+            <div class="column is-6 ">
+                <div class="section-media">
+                    <img style="height: 80%; width: 80%;" src="{{ url_for('static', filename='images/Picture1.png') }}">
                 </div>
             </div>
-
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="text" name="name" placeholder="Name" autofocus="">
-                </div>
-            </div>
-
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="password" name="password" placeholder="Password">
-                </div>
-            </div>
-
-            <button class="button is-block is-info is-large is-fullwidth">Sign Up</button>
-        </form>
+        </div>
     </div>
-</div>
 {% endblock %}
