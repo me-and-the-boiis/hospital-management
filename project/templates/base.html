@@ -31,9 +31,16 @@
         </div>
         <div id="navbarMenuHeroA" class="navbar-menu">
           <div class="navbar-end">
-            <a href="{{ url_for('main.index') }}" class="navbar-item">
-              Home
-            </a>
+            {% if not session['username'] %}
+              <a href="{{ url_for('main.index') }}" class="navbar-item">
+                Home
+              </a>
+            {% else %}
+              <div class="navbar-item">
+                <p style="font-weight:500; color: #00d1b2;">Hemllo, {{session['username']}}!</p>
+              </div>
+            {% endif %}
+
             <a href="{{ url_for('main.profile') }}" class="navbar-item">
               Profile
             </a>
@@ -63,7 +70,10 @@
     {% if messages %}
       <ul class=flashes>
         {% for message in messages %}
-          <li>{{ message }}</li>
+          <div class="notification is-primary">
+              <button class="delete"></button>
+              {{ message }}
+          </div>
         {% endfor %}
       </ul>
     {% endif %}

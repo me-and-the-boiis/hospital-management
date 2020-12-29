@@ -12,15 +12,13 @@ def login():
         con = db.connect()
         cursor = con.cursor()
         cursor.execute('SELECT * FROM accounts WHERE username = %s AND password = %s', (username, password,))
-        match = cursor.fetchone()
+        match = cursor.fetchall()
         if match:
             user = match[0]
             session['loggedin'] = True
-            # session['id'] = str(match['HIN'])
-            session['username'] = user
-            # return 'Logged in successfully!    ' + str(session['username'])
-            # print(session['username'])
-            # flash('You were successfully logged in')
+            session['username'] = user[1]
+            session['hin'] = user[0]
+            flash('You were successfully logged in')
             return render_template('User/index.html')
         else:
             error = 'Invalid credentials'
@@ -28,6 +26,7 @@ def login():
 
 @auth.route('/signup', methods = ['GET','POST'])
 def signup():
+    error = None
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'HIN' in request.form:
         username = request.form['username']
         hin = request.form['HIN']
@@ -36,12 +35,17 @@ def signup():
         cursor = con.cursor()
         cursor.execute('SELECT * FROM accounts WHERE username = %s OR HIN = %s', (username, hin, ))
         match = cursor.fetchone()
-        if match:
-            return render_template('User/index.html')
-        else:
+        if not match:
             cursor.execute('INSERT INTO accounts VALUES (%s, %s, %s)', (hin, username, password,))
             con.commit()
-    return render_template('User/signup.html')
+            session['loggedin'] = True
+            session['username'] = username
+            session['hin'] = hin
+            flash('Thành con nhà bà Công')
+            return render_template('User/index.html')
+        else:
+            error = 'Tài khoản đã tồn tại!'
+    return render_template('User/signup.html', error=error)
 
 @auth.route('/logout')
 def logout():

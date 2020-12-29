@@ -2,17 +2,17 @@
 
 {% block content %}
     <section class="section is-hero">
-        <div class="container">
+        <div class="container has-text-left">
             <div class="columns is-vcentered is-hcentered">
                 <div class="column is-6 is-5-fullhd is-offset-1 fullhd">
-                    <div class="section-header">
+                    <div class="section-header ">
                         <h1 style="font-size: 3em; color: #00d1b2;" class="title is-spaced">
                             CheemsMec Healthcare
                         </h1>
                         <h2 class="subtitle is-3">
                             Hệ thống chăm sóc sức khỏe Cheems nhất thế giới năm 2020
                         </h2>
-                        <a href="{{ url_for('auth.signup') }}">
+                        <a href="{{ url_for('patient.viewPatientProfile','123')}}">
                             <button class="button is-block is-primary is-large ">Đăng kí ngay</button>
                         </a>
                     </div>
