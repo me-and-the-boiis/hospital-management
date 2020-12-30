@@ -48,14 +48,6 @@
               </span>
           </p>
         </div>
-        {#          <div class="field">#}
-        {#            <p class="control is-expanded has-icons-left has-icons-right">#}
-        {#              <input name="email" class="input" type="email" placeholder="youremail@email.com" required>#}
-        {#              <span class="icon is-small is-left">#}
-        {#                <i class="fas fa-envelope"></i>#}
-        {#              </span>#}
-        {#            </p>#}
-        {#          </div>#}
       </div>
     </div>
 
@@ -86,8 +78,8 @@
           <div class="control">
             <div class="select is-fullwidth">
               <select name="gender">
-                <option {{ "selected" if patient[2] else "" }}>Nam</option>
-                <option {{ "selected" if not patient[2] else "" }}>Nữ</option>
+                <option {{ "selected" if patient[2] else "" }}>Nữ</option>
+                <option {{ "selected" if not patient[2] else "" }}>Nam</option>
                 <option>Khác</option>
               </select>
             </div>

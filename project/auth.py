@@ -20,7 +20,7 @@ def login():
             session['username'] = user
             # return 'Logged in successfully!    ' + str(session['username'])
             # print(session['username'])
-            # flash('You were successfully logged in')
+            # flash('You were successfully logged in' + user)
             return render_template('User/index.html')
         else:
             error = 'Invalid credentials'

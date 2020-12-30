@@ -2,184 +2,193 @@
 
 {% block content %}
 
-  <section class="section">
-    <div class="columns">
-      <div class="column"></div>
-      <div class="column is-two-thirds">
-        <div class="field">
-          <p class="control has-icons-left">
-            <input class="input is-rounded" type="email" placeholder="Tìm bệnh nhân theo mã Bảo hiểm y tế">
-            <span class="icon is-small is-left">
-              <i class="fas fa-search"></i>
-            </span>
+  {{ data[0] }}
+
+  <div class="columns">
+    <div class="column"></div>
+    <div class="column is-two-thirds">
+      <form method="post">
+        <div class="field is-grouped">
+          <p class="control is-expanded">
+            <input name="hin" class="input" type="text" placeholder="Tìm kiếm bệnh nhân theo mã Bảo hiểm y tế"
+                   autocomplete="off">
           </p>
+          <div class="control">
+            <button type="submit" class="button is-primary">
+              Tìm kiếm
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="column"></div>
+  </div>
+
+  <form method="put">
+    <section class="section">
+      <div class="columns">
+        <div class="column is-1"></div>
+        <div class="column is-4 has-text-left">
+          <strong style="font-size: 1.575em;">  {{ data[0][1] }} </strong> <br>
+          Mã BHYT: <strong> {{ data[0][0] }} </strong> <br>
+          {% if data[0][2] %}
+            Giới tính: <b>Nữ</b>
+          {% else %}
+            Giới tính: <b>Nam</b>
+          {% endif %}
+          <br><br> Lịch sử khám bệnh: <a href="#">Xem thêm</a>
+        </div>
+        <div class="column">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Ghi chú:</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <textarea name="note" class="textarea is-hovered" placeholder="Bỏ trống nếu không có ghi chú."
+                            rows="3"></textarea>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column is-1"></div>
+      </div>
+    </section>
+
+    <section class="section">
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Chỉ định xét nghiệm</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control">
+              <input name="test" id="xet-nghiem" class="input" type="text">
+            </p>
+          </div>
         </div>
       </div>
-      <div class="column"></div>
-    </div>
-    <br>
-    <div class="columns">
-      <div class="column is-1"></div>
-      <div class="column is-4 has-text-left">
-        <strong style="font-size: 1.575em;">  {{ data[0][1] }} </strong> <br>
-        Mã BHYT: <strong> {{ data[0][0] }} </strong> <br>
-        {% if data[0][2] %}
-          Giới tính: <b>Nam</b>
-        {% else %}
-          Giới tính: <b>Nữ</b>
-        {% endif %}
-        <br><br> Lịch sử khám bệnh: <a href="#">Xem thêm</a>
-      </div>
-      <div class="column">
-        <div class="field is-horizontal">
-          <div class="field-label is-normal">
-            <label class="label">Ghi chú:</label>
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Chỉ định chụp phim</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control">
+              <input name="xray" id="chup-phim" class="input" type="text">
+            </p>
           </div>
-          <div class="field-body">
-            <div class="field">
-              <p class="control">
-                <textarea class="textarea is-hovered" placeholder="Bỏ trống nếu không có ghi chú." rows="3"></textarea>
-              </p>
+        </div>
+      </div>
+
+      <br>
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <label class="label">Bệnh nhân</label>
+        </div>
+        <div class="field-body">
+          <div class="field is-narrow">
+            <div class="control">
+              <label class="radio">
+                <input name="ptype" type="radio" name="member">
+                Ngoại trú
+              </label>
+              <label class="radio">
+                <input name="ptype" type="radio" name="member">
+                Nội trú
+              </label>
             </div>
           </div>
         </div>
       </div>
-    <div class="column is-1"></div>
-    </div>
-  </section>
 
-  <section class="section">
-
-    <div class="field is-horizontal">
-      <div class="field-label is-normal">
-        <label class="label">Chỉ định xét nghiệm</label>
-      </div>
-      <div class="field-body">
-        <div class="field">
-          <p class="control">
-            <input id="xet-nghiem" class="input" type="text">
-          </p>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Bệnh chẩn đoán</label>
         </div>
-      </div>
-    </div>
-
-    <div class="field is-horizontal">
-      <div class="field-label is-normal">
-        <label class="label">Chỉ định chụp phim</label>
-      </div>
-      <div class="field-body">
-        <div class="field">
-          <p class="control">
-            <input id="chup-phim" class="input" type="text">
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <br>
-    <div class="field is-horizontal">
-      <div class="field-label">
-        <label class="label">Bệnh nhân</label>
-      </div>
-      <div class="field-body">
-        <div class="field is-narrow">
-          <div class="control">
-            <label class="radio">
-              <input type="radio" name="member">
-              Ngoại trú
-            </label>
-            <label class="radio">
-              <input type="radio" name="member">
-              Nội trú
-            </label>
+        <div class="field-body">
+          <div class="field">
+            <p class="control">
+              <input name="diagnosis" id="benh-chuan-doan" class="input" type="text">
+            </p>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="field is-horizontal">
-      <div class="field-label is-normal">
-        <label class="label">Bệnh chẩn đoán</label>
-      </div>
-      <div class="field-body">
-        <div class="field">
-          <p class="control">
-            <input id="benh-chuan-doan" class="input" type="text">
-          </p>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Thuốc chỉ định</label>
+        </div>
+        <div id='medicine-body' class="field-body" style="height: 240px; overflow-y: scroll; margin-bottom: 0;">
+          <div class="field">
+            <table id="medicine-table" class="table is-fullwidth">
+              <thead>
+              <tr>
+                <th><abbr title="STT">#</abbr></th>
+                <th>Tên thuốc</th>
+                <th>Cách sử dụng</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td><strong>1</strong></td>
+                <td>
+                  <div class="control">
+                    <input class="input" type="text">
+                  </div>
+                </td>
+                <td>
+                  <div class="control">
+                    <input class="input" type="text">
+                  </div>
+                </td>
+                <td>
+                  <button class="button is-danger is-inverted delete-item">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <button id="add-item" class="button is-primary is-light additem">
+              <i class="fas fa-plus"></i>
+              <h6 class="subtitle is-6" style="color: #f0f8ff;">Thêm thuốc</h6>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="field is-horizontal">
-      <div class="field-label is-normal">
-        <label class="label">Thuốc chỉ định</label>
-      </div>
-      <div id='medicine-body' class="field-body" style="height: 240px; overflow-y: scroll; margin-bottom: 0;">
-        <div class="field">
-          <table id="medicine-table" class="table is-fullwidth">
-            <thead>
-            <tr>
-              <th><abbr title="STT">#</abbr></th>
-              <th>Tên thuốc</th>
-              <th>Cách sử dụng</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td><strong>1</strong></td>
-              <td>
-                <div class="control">
-                  <input class="input" type="text">
-                </div>
-              </td>
-              <td>
-                <div class="control">
-                  <input class="input" type="text">
-                </div>
-              </td>
-              <td>
-                <button class="button is-danger is-inverted delete-item">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-          <button id="add-item" class="button is-primary is-light additem">
-            <i class="fas fa-plus"></i>
-            <h6 class="subtitle is-6" style="color: #f0f8ff;">Thêm thuốc</h6>
-          </button>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Chỉ định phẫu thuật</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control">
+              <input name="surgery" class="input" type="text">
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="field is-horizontal">
-      <div class="field-label is-normal">
-        <label class="label">Chỉ định phẫu thuật</label>
-      </div>
-      <div class="field-body">
-        <div class="field">
-          <p class="control">
-            <input class="input" type="text" disabled>
-          </p>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Ngày tái khám</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control">
+              <input name="date" id="ngay-taikham" class="input" type="date">
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="field is-horizontal">
-      <div class="field-label is-normal">
-        <label class="label">Ngày tái khám</label>
-      </div>
-      <div class="field-body">
-        <div class="field">
-          <p class="control">
-            <input id="ngay-taikham" class="input" type="date">
-          </p>
-        </div>
-      </div>
-    </div>
-    <button class="button is-primary">Hoàn thành</button>
-
-  </section>
+      <button class="button is-primary">Hoàn thành</button>
+    </section>
+  </form>
 
 {% endblock %}
