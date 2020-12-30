@@ -9,9 +9,8 @@
       <form method="get">
         <div class="field is-grouped">
           <p class="control is-expanded">
-            <input name="hin" class="input" type="text" placeholder="Tìm kiếm bệnh nhân theo mã Bảo hiểm y tế"
-                   autocomplete="off"
-                    value="{{ hin }}">
+            <input name="hin" class="input {{ 'is-danger' if data == None and hin else '' }}" type="text" placeholder="Tìm kiếm bệnh nhân theo mã Bảo hiểm y tế"
+                   autocomplete="off" value="{{ hin }}">
           </p>
           <div class="control">
             <button type="submit" class="button is-primary">
