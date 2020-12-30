@@ -59,15 +59,23 @@
     </nav>
   </div>
   <!-- Hero content: will be in the middle -->
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul class=flashes>
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-  {% endwith %}
+{#  {% with messages = get_flashed_messages() %}#}
+{#    {% if messages %}#}
+{#      <ul class=flashes>#}
+{#        {% for message in messages %}#}
+{#          <li>{{ message }}</li>#}
+{#        {% endfor %}#}
+{#      </ul>#}
+{#    {% endif %}#}
+{#  {% endwith %}#}
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="notification is-primary" style="text-align: center;">
+          <button class="delete"></button>
+          {{ messages[0] }}
+        </div>
+      {% endif %}
+    {% endwith %}
   <div class="hero-body" style="align-items: flex-start;">
     <div class="container has-text-centered">
       {% block content %}
