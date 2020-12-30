@@ -46,8 +46,8 @@ function submit() {
 }
 
 // console.log(session['loggedin']);
-if (1) {
-  $('.log-in').style.display = 'none';
-} else {
-  $('.log-out').style.display = 'none';
-}
+// if (1) {
+//   $('.log-in').style.display = 'none';
+// } else {
+//   $('.log-out').style.display = 'none';
+// }

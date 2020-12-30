@@ -5,6 +5,21 @@ patient = Blueprint('patient', __name__)
 conn = db.connect()
 cursor = conn.cursor()
 
+@patient.route('/patient', methods=['POST', 'GET'])
+def viewPatient():
+    if 'loggedin' in session:
+        return render_template('patient-index.html')
+    else:
+        return redirect(url_for('auth.login'))
+    # if request.method == 'GET':
+    #     cursor.execute("SELECT * FROM patient WHERE hin = '{}'".format(hin))
+    #     patient = cursor.fetchall()
+    #     # print(patient)
+    #     if not patient:
+    #         return "NOTFOUND"
+    #     return render_template('Patient/patient-info.html', patient = patient[0])
+
+
 @patient.route('/patient/<hin>', methods=['POST', 'GET'])
 def viewPatientProfile(hin):
     if request.method == 'GET':
