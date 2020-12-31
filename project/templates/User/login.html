@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+
     <div class="container has-text-left">
         {% if error %}
             <div class="notification is-danger is-light">
@@ -28,10 +29,7 @@
                         </div>
                     </div>
                     <div class="field">
-                        <label class="checkbox">
-                            <input type="checkbox">
-                            Remember me
-                        </label>
+                        <p>Didn't have an account? <a href="{{ url_for('auth.signup') }}" style="font-size: 1.25em; color: #00d1b2;">Regiser</a></p>
                     </div>
                     <button type = "submit" class="button is-block is-primary is-large ">Login</button>
                 </form>

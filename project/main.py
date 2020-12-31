@@ -13,6 +13,9 @@ def index():
     
     return render_template('User/index.html')
 
-@main.route('/profile')
+@main.route('/profile', methods=['GET', 'POST'])
 def profile():
-    return render_template('User/profile.html')
+    if 'loggedin' in session:
+        return render_template('patient-index.html')
+    error = "U havent logged in!"
+    return redirect(url_for('auth.login', error = error))

@@ -9,8 +9,8 @@ cursor = conn.cursor()
 def viewPatient():
     if 'loggedin' in session:
         return render_template('patient-index.html')
-    else:
-        return redirect(url_for('auth.login'))
+    error = "U havent logged in"
+    return redirect(url_for('auth.login'))
     # if request.method == 'GET':
     #     cursor.execute("SELECT * FROM patient WHERE hin = '{}'".format(hin))
     #     patient = cursor.fetchall()
