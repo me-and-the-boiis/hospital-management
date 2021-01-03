@@ -33,6 +33,15 @@ def doctorWorkspace():
         cursor.execute(
             'CALL Insert_Prescription(\'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\')'.format(currentDateTime, doctor, pHin, test, xray, diagnosis, ptype, date, note)
         )
+        data = cursor.fetchall()
+        prescriptionId = data[0][0]
+        medCode = request.form.getlist('medCode[]')
+        medQuantity = request.form.getlist('medQuantity[]')
+        medUsage = request.form.getlist('medUsage[]')
+        for i in range(len(medCode)):
+            cursor.execute(
+                'CALL Insert_Medication(\'{}\', \'{}\', \'{}\', \'{}\')'.format(prescriptionId, medCode[i], medQuantity[i], medUsage[i])
+            )
         conn.commit()
         flash('Thêm đơn thuốc thành công bệnh nhân {}!'.format(pHin))
         # print(currentDateTime, doctor, pHin, test, xray, diagnosis, bool(ptype), date, note)

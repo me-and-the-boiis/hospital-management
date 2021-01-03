@@ -18,13 +18,18 @@ $('#add-item').click(function() {
   <tr>
       <td><strong>${myBody.find('tr').length+1}</strong></td>
       <td>
-          <div class="control">
-              <input class="input" type="text" placeholder="Small input">
-          </div>
+        <div class="control">
+          <input name="medCode[]" class="input" type="text" placeholder="Small input">
+        </div>
+      </td>
+      <td>
+        <div class="control">
+          <input name="medQuantity[]" class="input" type="text" placeholder="Small input">
+        </div>
       </td>
       <td>
           <div class="control">
-              <input class="input" type="text" placeholder="Small input">
+              <input name="medUsage[]" class="input" type="text" placeholder="Small input">
           </div>
       </td>
       <td>

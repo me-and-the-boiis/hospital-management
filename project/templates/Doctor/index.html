@@ -133,7 +133,8 @@
                 <thead>
                 <tr>
                   <th><abbr title="STT">#</abbr></th>
-                  <th>Tên thuốc</th>
+                  <th>ID</th>
+                  <th>Số lượng</th>
                   <th>Cách sử dụng</th>
                 </tr>
                 </thead>
@@ -142,12 +143,17 @@
                   <td><strong>1</strong></td>
                   <td>
                     <div class="control">
-                      <input class="input" type="text">
+                      <input name="medCode[]" class="input" type="text" placeholder="Small input">
                     </div>
                   </td>
                   <td>
                     <div class="control">
-                      <input class="input" type="text">
+                      <input name="medQuantity[]" class="input" type="text" placeholder="Small input">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="control">
+                      <input name="medUsage[]" class="input" type="text" placeholder="Small input">
                     </div>
                   </td>
                   <td>
@@ -158,10 +164,10 @@
                 </tr>
                 </tbody>
               </table>
-              <button id="add-item" class="button is-primary is-light additem">
+              <div id="add-item" class="button is-primary is-light additem">
                 <i class="fas fa-plus"></i>
                 <h6 class="subtitle is-6" style="color: #f0f8ff;">Thêm thuốc</h6>
-              </button>
+              </div>
             </div>
           </div>
         </div>
